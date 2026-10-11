@@ -1,0 +1,14 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Zip project",
+			"type": "shell",
+			"command": "powershell -NoProfile -Command \"$root = 'C:\\Project\\farmer-friendly-redesign'; $zip = 'C:\\Project\\farmer-friendly-redesign.zip'; $exclude = @('node_modules','dist','.git'); $items = Get-ChildItem -Path $root -Force | Where-Object { $_.Name -notin $exclude }; if (Test-Path $zip) { Remove-Item $zip -Force }; Compress-Archive -Path $items.FullName -DestinationPath $zip -Force; Get-Item $zip | Select-Object FullName, Length\"",
+			"args": [],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		}
+	]
+}
